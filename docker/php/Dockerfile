@@ -27,6 +27,8 @@ RUN echo "extension=mongodb.so" > $PHP_INI_DIR/conf.d/mongodb.ini
 
 COPY . .
 
+RUN chmod +x init.sh
+
 RUN groupadd -g 1000 www
 RUN useradd -u 1000 -ms /bin/bash -g www www
 
@@ -36,4 +38,4 @@ USER www
 
 EXPOSE 9000
 
-CMD [ "./init.sh" ]
+CMD [ "php-fpm" ]
