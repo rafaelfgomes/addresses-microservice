@@ -1,0 +1,67 @@
+version: '3'
+
+services: 
+
+  #PHP
+  app:
+    volumes: 
+      - ./:/var/www/html/addresses-microservice
+    container_name: app
+    image: app-php
+    build: 
+      context: .
+      dockerfile: ./docker/php/Dockerfile
+    networks: 
+      - app-network
+    depends_on:
+      - "mongodb"
+
+  #Web Server
+  nginx:
+    volumes: 
+      - ./:/var/www/html/addresses-microservice
+    container_name: nginx
+    image: app-webserver
+    build: 
+      context: .
+      dockerfile: ./docker/nginx/Dockerfile
+    ports: 
+      - "23500:80"
+      - "443:443"
+    networks: 
+      - app-network
+    depends_on: 
+      - "app"
+
+  #MongoDB
+  mongodb:
+    build: 
+      context: .
+      dockerfile: ./docker/mongodb/Dockerfile
+    container_name: mongodb
+    image: app-mongodb
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: mongo
+      MONGO_INITDB_ROOT_PASSWORD: mongo
+    ports: 
+      - "27017:27017"
+    networks:
+      - app-network
+
+  composer:
+    volumes: 
+      - ./:/app
+    container_name: composer
+    image: app-composer
+    build: 
+      context: .
+      dockerfile: ./docker/composer/Dockerfile
+    depends_on: 
+      - "app"
+    networks:
+      - app-network
+
+networks: 
+  app-network:
+    driver: bridge
