@@ -17,6 +17,8 @@ $router->get('/', function () use ($router) {
 
 $router->group([ 'prefix' => 'service' ], function () use ($router) {
 
+    $router->get('addresses/{zipcode}', 'AddressController@findOrCreate');
+
     $router->get('states[/{id}]', 'StateController@show');
 
 });

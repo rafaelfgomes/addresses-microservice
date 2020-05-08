@@ -27,8 +27,8 @@ class StatesTableSeeder extends Seeder
         
                     'name' => $value->nome,
                     'initials' => $value->sigla,
-                    'created_at' => Carbon::now(),
-                    'updated_at' => Carbon::now()
+                    'created_at' => Carbon::now()->toDateTimeString(),
+                    'updated_at' => Carbon::now()->toDateTimeString()
         
                 ];
         
