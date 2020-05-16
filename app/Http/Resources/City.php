@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\Resource;
 
-class Address extends Resource 
+class City extends Resource 
 {
 
     /**

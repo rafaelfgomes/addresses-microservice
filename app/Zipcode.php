@@ -16,6 +16,7 @@ class Zipcode extends Eloquent
      */
     protected $fillable = [
         'number',
+        'complement',
         'address_id'
     ];
 
