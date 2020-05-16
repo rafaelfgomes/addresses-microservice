@@ -15,17 +15,13 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$router->group([ 'prefix' => 'service' ], function () use ($router) {
+$router->get('states[/{id}]', 'StateController@show');
+$router->get('states/{stateId}/cities', 'StateController@getCities');
 
-    $router->get('states[/{id}]', 'StateController@show');
-    $router->get('states/{stateId}/cities', 'StateController@getCities');
-    
-    $router->get('cities/{cityId}/neighborhoods', 'CityController@getNeighborhoods');
-    
-    $router->get('neighborhoods/{neighborhoodId}/addresses', 'NeighborhoodController@getAddresses');
-    
-    $router->get('neighborhoods/{neighborhoodId}/zipcodes', 'NeighborhoodController@getZipcodes');
-    
-    $router->get('zipcodes/{zipcode}', 'ZipcodeController@findOrCreate');
+$router->get('cities/{cityId}/neighborhoods', 'CityController@getNeighborhoods');
 
-});
+$router->get('neighborhoods/{neighborhoodId}/addresses', 'NeighborhoodController@getAddresses');
+
+$router->get('neighborhoods/{neighborhoodId}/zipcodes', 'NeighborhoodController@getZipcodes');
+
+$router->get('zipcodes/{zipcode}', 'ZipcodeController@findOrCreate');
