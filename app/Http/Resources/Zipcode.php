@@ -25,10 +25,13 @@ class Zipcode extends Resource
 
         return [
 
+            'type' => 'zipcodes',
             'id' => $this->zipcode->_id,
-            'complement' => $this->zipcode->complement,
-            'number' => $zipcodeFormatted
-
+            'attributes' => [
+                'complement' => $this->zipcode->complement,
+                'number' => $zipcodeFormatted
+            ]
+            
         ];
     }
 

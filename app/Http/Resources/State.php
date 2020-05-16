@@ -19,10 +19,13 @@ class State extends Resource
 
         return [
 
+            'type' => 'states',
             'id' => $this->_id,
-            'name' => $this->name,
-            'initials' => $this->initials
-
+            'attributes' => [
+                'name' => $this->name,
+                'initials' => $this->initials
+            ]
+            
         ];
     }
 

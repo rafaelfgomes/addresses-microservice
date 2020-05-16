@@ -19,8 +19,11 @@ class Address extends Resource
 
         return [
 
+            'type' => 'addresses',
             'id' => $this->_id,
-            'name' => $this->name
+            'attributes' => [
+                'name' => $this->name
+            ]
 
         ];
     }

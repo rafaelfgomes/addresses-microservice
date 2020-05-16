@@ -19,8 +19,12 @@ class City extends Resource
 
         return [
 
+            'type' => 'cities',
             'id' => $this->_id,
-            'name' => $this->name
+            'attributes' => [
+                'name' => $this->name,
+                'ibge_code' => $this->ibge_code
+            ]
 
         ];
     }

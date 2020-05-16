@@ -19,8 +19,11 @@ class Neighborhood extends Resource
 
         return [
 
+            'type' => 'neighborhoods',
             'id' => $this->_id,
-            'name' => $this->name
+            'attributes' => [
+                'name' => $this->name
+            ]
 
         ];
     }
