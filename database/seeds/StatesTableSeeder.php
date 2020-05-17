@@ -21,21 +21,24 @@ class StatesTableSeeder extends Seeder
             
             $json = json_decode($response->getBody());
 
+            $state = new State();
+
             foreach ($json as $value) {
 
-                $data[] = [
+                $state->updateOrCreate(
+                    [ 'name' => $value->nome, 'initials' => $value->sigla ],
+                    [
         
-                    'name' => $value->nome,
-                    'initials' => $value->sigla,
-                    'created_at' => Carbon::now()->toDateTimeString(),
-                    'updated_at' => Carbon::now()->toDateTimeString()
+                        'name' => $value->nome,
+                        'initials' => $value->sigla,
+                        'created_at' => Carbon::now()->toDateTimeString(),
+                        'updated_at' => Carbon::now()->toDateTimeString()
+            
+                    ]
+                
+                );
         
-                ];
-        
-            }
-
-            $state = new State();
-            $state->insert($data);
+            }            
 
         } catch (\Exception $e) {
 
