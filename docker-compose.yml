@@ -50,6 +50,11 @@ services:
       - "27017:27017"
     networks:
       - app-network
+    volumes: 
+      - mongodb-data:/data/db
+
+volumes: 
+  mongodb-data:
 
 networks: 
   app-network:
