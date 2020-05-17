@@ -8,6 +8,7 @@ services:
       - ./:/var/www/html/addresses-microservice
     container_name: app
     image: app-php
+    restart: always
     build: 
       context: .
       dockerfile: ./docker/php/Dockerfile
@@ -22,6 +23,7 @@ services:
       - ./:/var/www/html/addresses-microservice
     container_name: nginx
     image: app-webserver
+    restart: always
     build: 
       context: .
       dockerfile: ./docker/nginx/Dockerfile
@@ -46,19 +48,6 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: mongo
     ports: 
       - "27017:27017"
-    networks:
-      - app-network
-
-  composer:
-    volumes: 
-      - ./:/app
-    container_name: composer
-    image: app-composer
-    build: 
-      context: .
-      dockerfile: ./docker/composer/Dockerfile
-    depends_on: 
-      - "app"
     networks:
       - app-network
 

@@ -6,11 +6,11 @@ The addresses microservice is a project written in PHP using the Lumen Framework
 
 This is a dockerized project, so the only depency is Docker and Docker Compose:
 
-- [Docker] (https://www.docker.com/get-started)
+- [Docker](https://www.docker.com/get-started)
 
 ## Documentation
 
-The objective of this project is to create a resource to search and save locally for addresses of Brazil using zipcode, and filter lists of states, cities, neighborhoods and zipcodes. Each list has his endpoint and for the response I used the JSON API specification that can be found [here] (https://jsonapi.org/).
+The objective of this project is to create a resource to search and save locally for addresses of Brazil using zipcode, and filter lists of states, cities, neighborhoods and zipcodes. Each list has his endpoint and for the response I used the JSON API specification that can be found [here](https://jsonapi.org/).
 
 ## Endpoints of project
 
@@ -74,7 +74,6 @@ The objective of this project is to create a resource to search and save locally
 > /states
 
 ```json
-
 {
     "data": [
         {
